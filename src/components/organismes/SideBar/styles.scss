@@ -1,0 +1,91 @@
+.side-bar {
+  width: 32%;
+  padding: 30px 25px;
+  position: relative;
+  box-sizing: border-box;
+  
+  &__header {
+    @include center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  &__date {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__weather-icon {
+    @include center;
+    margin: 30px auto;
+    width: 100%;
+
+    &-pic {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__detail {
+
+    &-elements {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
+
+  &__side-element {
+    display: flex;
+    align-items: center;
+
+    &-pic {
+      width: 35px;
+      height: 35px;
+      margin-right: 15px;
+    }
+  }
+
+  &__degree-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__degree {
+    font-size: 30px;
+    font-weight: 200;
+    margin-bottom: 15px;
+
+    &-night {
+      color: $lightGrey_10,
+    }
+  }
+
+  &__position {
+    @include center;
+    margin: 0 auto;
+    margin-top: 50px;
+    box-sizing: border-box;
+    width: 90%;  
+    border-radius: 15px;
+    overflow: hidden;
+    height: 100px;
+    box-shadow: 2px 2px 4px -2px rgba($darkBlue, 0.2);
+
+    &-pic {
+      width: 100%;
+    }
+
+    &-text {
+      position: absolute;
+      color: $white;
+      font-weight: bold;
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 50px;
+    width: calc(100% - 50px); 
+  }
+}

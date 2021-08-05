@@ -2,8 +2,20 @@
 // main colors
 $bgGrey : #D6D7DB;
 $white : white;
+$darkBlue: #010105;
+$lightGrey: #F7F6F9;
+$lightGrey_10: #bab8bd;
+$weatherRed: #ec342d;
+$primaryBlue: #2c97ee;
+$primaryOrange: #EC6E4C;
 
 :export {
   bgGrey: $bgGrey;
   white: $white;
+  darkBlue: $darkBlue;
+  lightGrey: $lightGrey;
+  lightGrey10: $lightGrey_10;
+  weatherRed: $weatherRed;
+  primaryBlue: $primaryBlue;
+  primaryOrange: $primaryOrange;
 }

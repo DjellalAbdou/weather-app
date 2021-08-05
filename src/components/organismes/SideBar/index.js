@@ -1,11 +1,26 @@
-import React from 'react'
+import { compose, bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 
-const SideBar = () => {
-  return (
-    <div>
+import * as CoordsActions from 'core/redux/coordinates/actions';
+import * as CoordsSelectors from 'core/redux/coordinates/selectors';
 
-    </div>
-  )
-}
+import DumbComponent from './Dumb';
 
-export default SideBar;
+const SmartComponent = compose(
+  connect(
+    state => ({
+      selectedWeather: CoordsSelectors.getSelectedWeather(state) && CoordsSelectors.getSelectedWeather(state).toJS(),
+      currentSelectedDay: CoordsSelectors.getCurrentSelectedDay(state) && CoordsSelectors.getCurrentSelectedDay(state).toJS(),
+    }),
+    dispatch =>
+      bindActionCreators(
+        {
+          ...CoordsActions,
+        },
+        dispatch,
+      ),
+  ),
+)(DumbComponent);
+
+export default hoistNonReactStatics(SmartComponent, DumbComponent);

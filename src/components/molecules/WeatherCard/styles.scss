@@ -1,0 +1,48 @@
+.weather-card {
+  background-color: $white;
+  border-radius: 15px;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  padding: 10px 20px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+
+  &--selected {
+    border: 1px solid $primaryBlue;
+  }
+
+  &__title {
+    color: $darkBlue;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  &__image-container {
+    @include center;
+    margin: 5px auto;
+    width: 100%;
+
+    &-pic {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__degree {
+    @include center;
+
+    &-day {
+      color: $darkBlue;
+      font-size: 14px;
+    }
+
+    &-night {
+      color: $lightGrey_10;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+  }
+
+}

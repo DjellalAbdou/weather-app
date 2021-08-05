@@ -10,6 +10,7 @@ import DumbComponent from './Dumb';
 const SmartComponent = compose(
   connect(
     state => ({
+      userCoords: CoordsSelectors.getUserCoords(state) && CoordsSelectors.getUserCoords(state).toJS(),
       selectedWeather: CoordsSelectors.getSelectedWeather(state) && CoordsSelectors.getSelectedWeather(state).toJS(),
       currentSelectedDay: CoordsSelectors.getCurrentSelectedDay(state) && CoordsSelectors.getCurrentSelectedDay(state).toJS(),
     }),

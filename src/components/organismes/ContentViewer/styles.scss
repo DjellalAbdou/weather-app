@@ -1,0 +1,14 @@
+.content-viewer {
+  flex: 1;
+  background-color: $lightGrey;
+  padding: 25px;
+  overflow-y: scroll;
+
+  &__card-container {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
