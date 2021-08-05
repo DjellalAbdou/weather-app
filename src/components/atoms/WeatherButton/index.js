@@ -15,6 +15,7 @@ const WeatherButton = ({ text, color, CTA }) => {
 WeatherButton.propTypes = {
   text: PropTypes.string.isRequired,
   color: PropTypes.string,
+  CTA: PropTypes.func.isRequired
 };
 
 WeatherButton.defaultProps = {

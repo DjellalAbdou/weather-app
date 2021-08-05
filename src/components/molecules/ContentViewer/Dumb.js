@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MapViewer from 'components/molecules/MapViewer';
-import WeatherCard from 'components/molecules/WeatherCard';
+import MapViewer from 'components/atoms/MapViewer';
+import WeatherCard from 'components/atoms/WeatherCard';
 import ContentHeader from './components/ContentHeader';
 
 const ContentViewer = ({ selectedWeather, currentSelectedDay }) => {

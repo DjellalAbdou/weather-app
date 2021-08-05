@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 
-import SideBar from 'components/organismes/SideBar';
-import ContentViewer from 'components/organismes/ContentViewer';
+import SideBar from 'components/molecules/SideBar';
+import ContentViewer from 'components/molecules/ContentViewer';
 
 const Dashboard = ({
   saveUserCoordinates,

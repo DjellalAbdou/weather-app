@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import { MapPin } from 'react-feather';
 import Colors from 'colors';
-import WeatherButton from 'components/molecules/WeatherButton';
+import WeatherButton from 'components/atoms/WeatherButton';
 
 const MAP_KEY = process.env.REACT_APP_MAP_BOX_KEY;
 const MAP_STYLE = process.env.REACT_APP_MAP_STYLE;
