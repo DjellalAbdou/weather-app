@@ -1,7 +1,6 @@
 import InitialState from './state';
 import types from './constants';
 import Immutable from 'immutable';
-import { type } from 'language-tags';
 
 const ReducerKey = 'COORDS_REDUCER';
 
@@ -22,10 +21,15 @@ const dataReducer = (state = InitialState, action) => {
         currentSelectedDay: Immutable.fromJS(action.payload)
       });
 
-    case type.SAVE_SELECTED_DEGREE_TYPE:
+    case types.SAVE_SELECTED_DEGREE_TYPE:
       return state.merge({
         selectedDegreeType: action.payload
       })
+
+    case types.SAVE_SELECTED_PLACE_FULFILLED:
+      return state.merge({
+        selectedPlace: Immutable.fromJS(action.payload.data)
+      });
 
     default:
       return state;

@@ -30,12 +30,22 @@ export function saveCurrentSelectedDay(day) {
   };
 }
 
-export function saveSelectedDegreeType(type) {
+export function saveSelectedDegreeType(degreeType) {
   return dispatch => {
 
     return dispatch({
       type: types.SAVE_SELECTED_DEGREE_TYPE,
-      payload: type
+      payload: degreeType
     })
   };
+}
+
+export function getSelectedPlace(coords) {
+  return (dispatch, getState, { api }) => {
+
+    return dispatch({
+      type: types.SAVE_SELECTED_PLACE,
+      payload: api.getSelectedPlace(coords),
+    });
+  }
 }

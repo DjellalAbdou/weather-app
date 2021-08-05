@@ -12,6 +12,7 @@ const SmartComponent = compose(
     state => ({
       userCoords: CoordsSelectors.getUserCoords(state) && CoordsSelectors.getUserCoords(state).toJS(),
       selectedWeather: CoordsSelectors.getSelectedWeather(state) && CoordsSelectors.getSelectedWeather(state).toJS(),
+      selectedDegreeType: CoordsSelectors.getSelectedDegreeType(state) && CoordsSelectors.getSelectedDegreeType(state)
     }),
     dispatch =>
       bindActionCreators(

@@ -12,6 +12,8 @@ const SmartComponent = compose(
     state => ({
       selectedWeather: CoordsSelectors.getSelectedWeather(state) && CoordsSelectors.getSelectedWeather(state).toJS(),
       currentSelectedDay: CoordsSelectors.getCurrentSelectedDay(state) && CoordsSelectors.getCurrentSelectedDay(state).toJS(),
+      selectedDegreeType: CoordsSelectors.getSelectedDegreeType(state) && CoordsSelectors.getSelectedDegreeType(state),
+      selectedPlace: CoordsSelectors.getSelectedPlace(state) && CoordsSelectors.getSelectedPlace(state).toJS()
     }),
     dispatch =>
       bindActionCreators(

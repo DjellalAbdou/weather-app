@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { convertCelciusToFarenheit } from 'core/utils';
 import dates from 'dates';
 
 const ICON_URL = process.env.REACT_APP_API_ICON;
 
-const WeatherCard = ({ day, selected, saveCurrentSelectedDay }) => {
+const WeatherCard = ({ day, selected, saveCurrentSelectedDay, selectedDegreeType }) => {
   const { sunrise, temp, weather } = day;
   const weatherCardClass = classNames({
     'weather-card': true,
@@ -28,8 +29,18 @@ const WeatherCard = ({ day, selected, saveCurrentSelectedDay }) => {
         />
       </div>
       <div className="weather-card__degree">
-        <div className="weather-card__degree-day">{Math.round(temp.day)}°</div>
-        <div className="weather-card__degree-night">{Math.round(temp.night)}°</div>
+        {selectedDegreeType === 'C' && (
+          <>
+            <div className="weather-card__degree-day">{Math.round(temp.day)}°</div>
+            <div className="weather-card__degree-night">{Math.round(temp.night)}°</div>
+          </>
+        )}
+        {selectedDegreeType === 'F' && (
+          <>
+            <div className="weather-card__degree-day">{Math.round(convertCelciusToFarenheit(temp.day))}°</div>
+            <div className="weather-card__degree-night">{Math.round(convertCelciusToFarenheit(temp.night))}°</div>
+          </>
+        )}
       </div>
     </div>
   )
@@ -39,7 +50,8 @@ WeatherCard.propTypes = {
   day: PropTypes.object.isRequired,
   selected: PropTypes.bool,
   // redux props
-  saveCurrentSelectedDay: PropTypes.func.isRequired
+  saveCurrentSelectedDay: PropTypes.func.isRequired,
+  selectedDegreeType: PropTypes.string.isRequired,
 }
 
 WeatherCard.defaultProps = {

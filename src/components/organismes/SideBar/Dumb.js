@@ -6,11 +6,12 @@ import classNames from 'classnames';
 
 import city from 'assets/images/city.jpg';
 
+import { convertCelciusToFarenheit } from 'core/utils';
 import dates from 'dates';
 
 const ICON_URL = process.env.REACT_APP_API_ICON;
 
-const SideBar = ({ currentSelectedDay }) => {
+const SideBar = ({ currentSelectedDay, selectedDegreeType, selectedPlace }) => {
   const {
     sunrise,
     temp,
@@ -26,6 +27,8 @@ const SideBar = ({ currentSelectedDay }) => {
     'side-bar__degree-night': true
   })
 
+  const nameOfCity = selectedPlace.list && selectedPlace.list[0].name;
+
   return (
     <div className="side-bar">
       <div className="side-bar__header">Weather Mapper</div>
@@ -38,14 +41,36 @@ const SideBar = ({ currentSelectedDay }) => {
       </div>
       <div className="side-bar__date">{dates.shortFullDay(sunrise)}</div>
       <div className="side-bar__degree-container">
-        <div className="side-bar__degree">{Math.round(temp.day)}° C</div>
-        <div className={nightValueStyle}>{Math.round(temp.night)}° C</div>
+        {selectedDegreeType === 'C' && (
+          <>
+            <div className="side-bar__degree">{Math.round(temp.day)}° C</div>
+            <div className={nightValueStyle}>{Math.round(temp.night)}° C</div>
+          </>
+        )}
+        {selectedDegreeType === 'F' && (
+          <>
+            <div className="side-bar__degree">{Math.round(convertCelciusToFarenheit(temp.day))}° F</div>
+            <div className={nightValueStyle}>{Math.round(convertCelciusToFarenheit(temp.night))}° F</div>
+          </>
+        )}
+
       </div>
       <div className="side-bar__detail">
         <div>feels like</div>
         <div className="side-bar__degree-container">
-          <div className="side-bar__degree">{Math.round(feelsLike.day)}° C</div>
-          <div className={nightValueStyle}>{Math.round(feelsLike.night)}° C</div>
+          {selectedDegreeType === 'C' && (
+            <>
+              <div className="side-bar__degree">{Math.round(feelsLike.day)}° C</div>
+              <div className={nightValueStyle}>{Math.round(feelsLike.night)}° C</div>
+            </>
+          )}
+          {selectedDegreeType === 'F' && (
+            <>
+              <div className="side-bar__degree">{Math.round(convertCelciusToFarenheit(feelsLike.day))}° F</div>
+              <div className={nightValueStyle}>{Math.round(convertCelciusToFarenheit(feelsLike.night))}° F</div>
+            </>
+          )}
+
         </div>
         <div className="side-bar__detail-elements">
           <div className="side-bar__side-element">
@@ -73,7 +98,7 @@ const SideBar = ({ currentSelectedDay }) => {
       <div className="side-bar__footer">
         <div className="side-bar__position">
           <img src={city} alt="city" className="side-bar__position-pic" />
-          <div className="side-bar__position-text"> New York, NY, USA</div>
+          <div className="side-bar__position-text">{nameOfCity}</div>
         </div>
       </div>
     </div>

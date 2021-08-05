@@ -11,6 +11,7 @@ const Dashboard = ({
   selectedWeather,
   saveCurrentSelectedDay,
   currentSelectedDay,
+  getSelectedPlace,
   userCoords
 }) => {
 
@@ -20,9 +21,9 @@ const Dashboard = ({
         const { latitude, longitude } = position.coords;
         saveUserCoordinates && saveUserCoordinates({ latitude, longitude });
         getCurrentPositionWeather && getCurrentPositionWeather({ latitude, longitude }).then(res => {
-          console.log(res);
           saveCurrentSelectedDay && saveCurrentSelectedDay(res.value.data.daily[0])
         });
+        getSelectedPlace && getSelectedPlace({ latitude, longitude });
       })
     }
   }, []);
@@ -62,7 +63,8 @@ Dashboard.propTypes = {
   selectedWeather: PropTypes.object.isRequired,
   userCoords: PropTypes.object.isRequired,
   saveCurrentSelectedDay: PropTypes.func.isRequired,
-  currentSelectedDay: PropTypes.object.isRequired
+  currentSelectedDay: PropTypes.object.isRequired,
+  getSelectedPlace: PropTypes.func.isRequired,
 }
 
 export default Dashboard;

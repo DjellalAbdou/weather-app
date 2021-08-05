@@ -4,5 +4,6 @@ export default Map({
   userLocation: Map({}),
   selectedPositionWeather: Map({}),
   currentSelectedDay: Map({}),
-  selectedDegreeType: 'C'
+  selectedDegreeType: 'C',
+  selectedPlace: Map({}),
 })
