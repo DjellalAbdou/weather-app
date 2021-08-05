@@ -23,7 +23,7 @@ const ContentHeader = ({ selectedDegreeType, saveSelectedDegreeType }) => {
 
   return (
     <div className="content-header">
-      <div className="content-header__title"> Welcome Anonymose User</div>
+      <div className="content-header__title"> Welcome Anonymous User</div>
       <div className="content-header__right-elem">
         <div className={CdegreeType} onClick={handleDegreeClick('C')}>°C</div>
         <div className={FdegreeType} onClick={handleDegreeClick('F')}>°F</div>

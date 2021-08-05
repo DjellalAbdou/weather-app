@@ -56,6 +56,20 @@ const MapViewer = ({
     })
   }
 
+  const handleReset = () => () => {
+    setViewPort({
+      ...viewPort,
+      latitude,
+      longitude,
+      zoom: 8
+    });
+    setCoords({ latitude, longitude });
+    getCurrentPositionWeather && getCurrentPositionWeather({ latitude, longitude }).then(res => {
+      saveCurrentSelectedDay && saveCurrentSelectedDay(res.value.data.daily[0]);
+      getSelectedPlace && getSelectedPlace({ latitude, longitude });
+    })
+  }
+
   return (
     <div className="map-viewer">
       <ReactMapGL
@@ -73,7 +87,10 @@ const MapViewer = ({
           <MapPin color={Colors.primaryOrange} size={30} />
         </Marker>
       </ReactMapGL>
-      <WeatherButton text="centralise" CTA={handleBtnCallToAction()} />
+      <div className="map-viewer__btn-container">
+        <WeatherButton className="map-viewer__btn-left" text="centralize" CTA={handleBtnCallToAction()} />
+        <WeatherButton text="reset" CTA={handleReset()} />
+      </div>
     </div>
   )
 }

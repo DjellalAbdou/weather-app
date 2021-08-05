@@ -2,7 +2,7 @@
   flex: 1;
   background-color: $lightGrey;
   padding: 25px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   &__card-container {
     margin-top: 40px;
