@@ -380,6 +380,7 @@ module.exports = function (webpackEnv) {
     },
     module: {
       strictExportPresence: true,
+      noParse: /(mapbox-gl)\.js$/,
       rules: [
         // Disable require.ensure as it's not a standard language feature.
         { parser: { requireEnsure: false } },
@@ -417,6 +418,7 @@ module.exports = function (webpackEnv) {
               include: paths.appSrc,
               loader: require.resolve('babel-loader'),
               options: {
+                ignore: ['./node_modules/mapbox-gl/dist/mapbox-gl.js'],
                 customize: require.resolve(
                   'babel-preset-react-app/webpack-overrides'
                 ),
@@ -461,6 +463,7 @@ module.exports = function (webpackEnv) {
               exclude: /@babel(?:\/|\\{1,2})runtime/,
               loader: require.resolve('babel-loader'),
               options: {
+                ignore: ['./node_modules/mapbox-gl/dist/mapbox-gl.js'],
                 babelrc: false,
                 configFile: false,
                 compact: false,

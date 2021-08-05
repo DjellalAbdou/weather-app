@@ -1,13 +1,15 @@
 # Stage 1 - build
-FROM node as build
-WORKDIR /workspace/app
-COPY package.json yarn.lock ./
+FROM node:14-alpine as build
+RUN mkdir /app
+WORKDIR /app
+COPY package.json ./
 RUN yarn
-COPY . ./
+RUN yarn add react-scripts@3.4.1 -g --silent
+COPY . /app
 RUN yarn build
 
 # Stage 2 - production environment
-FROM nginx:1.12-alpine
-COPY --from=build-deps /workspace/app/build /usr/share/nginx/html
+FROM nginx:stable-alpine
+COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
